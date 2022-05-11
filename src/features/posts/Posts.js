@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Post } from "./Post";
 import {
   fetchPosts,
-  selectPosts,
+  selectFilteredPosts,
   isLoadingPosts,
   failedToLoadPosts,
   selectedSubReddit,
   selectSubRedditDisplayName,
+  selectSearchTerm,
 } from "./postsSlice";
 import "./Posts.css";
 
 export function Posts() {
   const dispatch = useDispatch();
-  const posts = useSelector(selectPosts);
+  const posts = useSelector(selectFilteredPosts);
   const postLink = useSelector(selectedSubReddit);
   const postsDisplayName = useSelector(selectSubRedditDisplayName);
+  const searchTerm = useSelector(selectSearchTerm);
 
   useEffect(() => {
     dispatch(fetchPosts(postLink));
@@ -37,9 +39,17 @@ export function Posts() {
     );
   }
 
+  function computeDisplayTitle() {
+    let displayTitle = postsDisplayName;
+    if (searchTerm) {
+      displayTitle += ` - ${searchTerm}`;
+    }
+    return displayTitle.slice(0, 32);
+  }
+
   return (
     <section>
-      <h2>{postsDisplayName}</h2>
+      <h2>{computeDisplayTitle()}</h2>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>

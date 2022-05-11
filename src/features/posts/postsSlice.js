@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
 import Reddit from "../../api/redditApi";
 
 export const fetchPosts = createAsyncThunk(
@@ -48,7 +52,7 @@ const postsSlice = createSlice({
   },
 });
 
-// Selectors
+// Selectors Basic
 export const selectPosts = (state) => state.posts.posts;
 export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
 export const failedToLoadPosts = (state) => state.posts.failedToLoadPosts;
@@ -57,7 +61,23 @@ export const selectSubRedditDisplayName = (state) =>
   state.posts.selectedSubRedditDisplayName;
 export const selectSearchTerm = (state) => state.posts.searchTerm;
 
+// Selectors createSelector
+export const selectFilteredPosts = createSelector(
+  [selectPosts, selectSearchTerm],
+  (posts, searchTerm) => {
+    if (searchTerm !== "") {
+      return posts.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    return posts;
+  }
+);
+
 // Exports
-export const { setSelectedSubReddit, setSelectedSubRedditDisplayName, setSearchTerm } =
-  postsSlice.actions;
+export const {
+  setSelectedSubReddit,
+  setSelectedSubRedditDisplayName,
+  setSearchTerm,
+} = postsSlice.actions;
 export default postsSlice.reducer;
