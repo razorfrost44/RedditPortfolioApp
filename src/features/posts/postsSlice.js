@@ -58,6 +58,6 @@ export const selectSubRedditDisplayName = (state) =>
 export const selectSearchTerm = (state) => state.posts.searchTerm;
 
 // Exports
-export const { setSelectedSubReddit, setSelectedSubRedditDisplayName } =
+export const { setSelectedSubReddit, setSelectedSubRedditDisplayName, setSearchTerm } =
   postsSlice.actions;
 export default postsSlice.reducer;

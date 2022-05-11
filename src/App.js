@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Header } from "./features/header/Header";
 import { Posts } from "./features/posts/Posts";
 import { SubReddits } from "./features/subreddits/SubReddits";
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Reddit Simple</h1>
+        <Header />
       </header>
       <main>
         <section className="posts">
