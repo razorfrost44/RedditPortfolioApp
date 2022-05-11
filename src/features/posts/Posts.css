@@ -1,0 +1,87 @@
+.posts {
+  background-color: blanchedalmond;
+}
+
+.posts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.post {
+  border: 1px solid black;
+  max-width: 98%;
+  margin: 1%;
+  padding: 0.5%;
+}
+
+.post p {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.post img {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.postDetails {
+  font-size: 1rem;
+  font-weight: normal;
+  border-top: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.postDetails button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.numComments {
+  display: flex;
+  align-items: center;
+}
+
+.voteDetails {
+  display: flex;
+  align-items: center;
+}
+
+.post .author {
+  font-weight: bold;
+  color: blue;
+}
+
+.post .numComments {
+  font-weight: bold;
+}
+
+.messageIcon {
+  font-size: 1.5rem;
+}
+
+.upVote.active {
+  color: green;
+}
+
+.downVote.active {
+  color: red;
+}
+
+.numUps {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.numUps.green {
+  color: green;
+}
+
+.numUps.red {
+  color: red;
+}
