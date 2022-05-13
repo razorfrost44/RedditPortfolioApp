@@ -1,7 +1,28 @@
 .comments {
-  background-color: aliceblue;
+  background-color: lightblue;
+  width: 100%;
 }
 
 .comment {
-  background-color: darkkhaki;
+  background-color: lightskyblue;
+  max-width: 100%;
+  word-break: break-all;
+  /* overflow-wrap: break-word; */
+  padding: 0.5%;
+  margin: 1% 0;
+}
+
+.comment .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment p {
+  font-weight: normal !important;
+  font-size: 1rem !important;
+}
+
+p.postAuthor {
+  font-weight: bold !important;
 }

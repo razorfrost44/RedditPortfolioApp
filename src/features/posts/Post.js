@@ -7,12 +7,12 @@ import {
   TiArrowDownThick,
   TiArrowDownOutline,
 } from "react-icons/ti";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Comments } from "../comments/Comments";
-import { setSelectedPost } from "../comments/commentsSlice";
+// import { setSelectedPost } from "../comments/commentsSlice";
 
 export function Post({ post }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [voteValue, setVoteValue] = useState("unvoted");
   const [commentsVisible, setCommentsVisible] = useState(false);
 
@@ -50,7 +50,7 @@ export function Post({ post }) {
 
   function toggleComments() {
     commentsVisible ? setCommentsVisible(false) : setCommentsVisible(true);
-    dispatch(setSelectedPost(post.id));
+    // dispatch(setSelectedPost(post.id));
   }
 
   function renderComments() {

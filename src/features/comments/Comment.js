@@ -9,7 +9,7 @@ export function Comment({ comment }) {
   return (
     <article className="comment">
       <div className="details">
-        <p>{comment.author}</p>
+        <p className="postAuthor">{comment.author}</p>
         <p>{convertTime(comment.created_utc)}</p>
       </div>
       <p>{comment.body}</p>

@@ -3,7 +3,6 @@ import Reddit from "../../api/redditApi";
 
 const initialState = {
   comments: {},
-  selectedPost: "",
   isLoadingComments: false,
   failedToLoadComments: false,
 };
@@ -19,11 +18,7 @@ export const fetchCommentsForPost = createAsyncThunk(
 const commentsSlice = createSlice({
   name: "comments",
   initialState,
-  reducers: {
-    setSelectedPost: (state, action) => {
-      state.selectedPost = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: {
     [fetchCommentsForPost.pending]: (state) => {
       state.isLoadingComments = true;
@@ -48,7 +43,7 @@ const commentsSlice = createSlice({
 export const selectComments = (state) => state.comments.comments;
 export const isLoadingComments = (state) => state.comments.isLoadingComments;
 export const failedToLoadComments = (state) => state.failedToLoadComments;
-export const selectedPost = (state) => state.comments.selectedPost;
+export const selectCommentsById = (state, id) => state.comments.comments[id];
 
 // Selectors createSelector
 
@@ -64,5 +59,5 @@ export const selectedPost = (state) => state.comments.selectedPost;
 // );
 
 // Exports
-export const { setSelectedPost } = commentsSlice.actions;
+// export const { setSelectedPost } = commentsSlice.actions;
 export default commentsSlice.reducer;
