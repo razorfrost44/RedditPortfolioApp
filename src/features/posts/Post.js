@@ -7,9 +7,14 @@ import {
   TiArrowDownThick,
   TiArrowDownOutline,
 } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { Comments } from "../comments/Comments";
+import { setSelectedPost } from "../comments/commentsSlice";
 
 export function Post({ post }) {
+  const dispatch = useDispatch();
   const [voteValue, setVoteValue] = useState("unvoted");
+  const [commentsVisible, setCommentsVisible] = useState(false);
 
   function computeVotedValue(vote) {
     if (vote === voteValue) {
@@ -43,6 +48,17 @@ export function Post({ post }) {
     return voteValue === "up" ? "green" : voteValue === "down" ? "red" : "";
   }
 
+  function toggleComments() {
+    commentsVisible ? setCommentsVisible(false) : setCommentsVisible(true);
+    dispatch(setSelectedPost(post.id));
+  }
+
+  function renderComments() {
+    if (commentsVisible) {
+      return <Comments permalink={post.permalink} postId={`t3_${post.id}`} />;
+    }
+  }
+
   return (
     <article className="post">
       <p>{`${post.title}`}</p>
@@ -68,12 +84,17 @@ export function Post({ post }) {
           </button>
         </span>
         <span className="numComments">
-          <button type="button" className="commentsButton">
+          <button
+            type="button"
+            className="commentsButton"
+            onClick={() => toggleComments()}
+          >
             <TiMessage className="messageIcon" />
           </button>
           {post.num_comments}
         </span>
       </div>
+      <div className="comments">{renderComments()}</div>
     </article>
   );
 }
